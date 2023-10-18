@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let persona = {'nombre':'pepe','edad':'18'};
+        let persona2 = {'nombre':'ismael','edad':'20'};
+
+        let persona3 = {'nombre':'roberta','edad':'28'};
+        let persona4 = persona3;
+
+        function objEquals(object1,object2){
+            let properietiesList1 = Object.keys(object1).sort();
+            let properietiesList2 = Object.keys(object2).sort();
+
+            if(properietiesList1.length !== properietiesList2.length){
+                return false;
+            }
+
+            if(properietiesList1.join("") !== properietiesList2.join("")){
+                return false;
+            }
+
+            for(propiertie of properietiesList1){
+                if(object1.propiertie != object2.propiertie){
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        console.log(objEquals(persona,persona2))
+    </script>
+</body>
+</html>

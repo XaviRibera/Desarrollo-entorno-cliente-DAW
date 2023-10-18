@@ -1,0 +1,113 @@
+<html><head><meta charset="utf-8"></head>
+<body>
+<h2>Arrays de Objetos</h2>
+
+<button onclick="notasAlumno()">Notas de un alumno</button><br><p>
+
+<button onclick="subeUnPunto()">Subir un punto en cada asignatura</button><br></p><p>
+
+<button onclick="alumnosCiudad()">Buscar alumnos de una ciudad</button>
+<button onclick="alumnosCurso()">Buscar alumnos de un curso</button><br></p><p>
+
+<button onclick="ordenaEdad()">Ordenar alumnos por edad</button>
+<button onclick="ordenaNombreAsc()">Ordenar alumnos por nombre ascendente</button>
+<button onclick="ordenaNombreDesc()">Ordenar alumnos por nombre descendente</button><br></p><p>
+
+<button onclick="borraAlumno()">Borrar alumno</button><br></p><p>
+
+<button onclick="nuevoAlumno()">Nuevo alumno</button>
+<button onclick="nuevaAsignatura()">Nueva asignatura</button>
+
+
+
+<script>
+"use strict"
+let alumnos=[{'codigo':'DAW-1-2020',
+              'nombre':'Pepe',
+              'ciudad':'Valencia',
+			  'calificaciones':[{'asignatura':'PRG','nota':9},
+			                    {'asignatura':'GBD','nota':6}, 
+								{'asignatura':'ING','nota':4},
+								{'asignatura':'FOL','nota':3}
+								],
+			  'edad':24},
+			  {'codigo':'DAW-2-2020',
+			  'nombre':'Juan',
+              'ciudad':'Castellon',
+			  'calificaciones':[{'asignatura':'DWC','nota':4},
+			                    {'asignatura':'DWS','nota':6}, 
+								{'asignatura':'DAW','nota':7},
+								{'asignatura':'DIW','nota':8},
+								{'asignatura':'ING','nota':9},
+			                    {'asignatura':'EIE','nota':2}
+								],
+			  'edad':28},
+			  {'codigo':'DAW-1-2019',
+			  'nombre':'Ana',
+              'ciudad':'Valencia',
+			  'calificaciones':[{'asignatura':'PRG','nota':6},
+			                    {'asignatura':'GBD','nota':2}, 
+								{'asignatura':'ING','nota':6},
+								{'asignatura':'FOL','nota':2}
+								],
+			  'edad':22},
+			  {'codigo':'DAW-2-2020',
+			  'nombre':'Maria',
+              'ciudad':'Castellon',
+			  'calificaciones':[{'asignatura':'DWC','nota':4},
+			                    {'asignatura':'DWS','nota':6}, 
+								{'asignatura':'DAW','nota':7},
+								{'asignatura':'DIW','nota':8},
+								{'asignatura':'ING','nota':4},
+			                    {'asignatura':'EIE','nota':1}
+								],
+			  'edad':30}
+			]
+			  
+function notasAlumno(){
+	let nameAlu = prompt("Nombre alumno a buscar:");
+	let alumno = alumnos.find(alumno => alumno.nombre === nameAlu);
+	if(alumno == undefined){
+		console.log("No existe el alumno " + nameAlu);
+	}else{
+		let media = 0;
+		let mejorNota = 0;
+		let asignaturaMejorNota = "";
+		let peorNota = 10;
+		let asignaturaPeorNota = "";
+		
+		alumno.calificaciones.map(c =>{ media += c.nota
+									if(c.nota>mejorNota){}
+		});
+		console.log(media)
+	}
+}
+
+function subeUnPunto(){
+	alumnos.forEach(a=>a.calificaciones.map(n=>n.nota++))
+}
+
+function alumnosCiudad(){
+	let ciudad = prompt("Ciudad: ");
+	let alumnosCiudad = alumnos.filter(a => a.ciudad == ciudad);
+	if(alumnosCiudad.length == 0){
+		console.log("No hay alumnos con esa ciudad")
+	}else{
+		alumnosCiudad.forEach(a => console.log(a.nombre));
+	}
+}
+
+function alumnosCurso(){
+	let curso = prompt("Curso: ");
+	let alumnoCurso = alumnos.filter(a =>a.codigo.split("-")[1] == curso);
+
+	if(alumnoCurso.length == 0){
+		console.log("No hay alumnos con ese curso")
+	}else{
+		alumnoCurso.forEach(a => console.log(a.nombre));
+	}
+}
+</script>
+
+
+</p></body></html>

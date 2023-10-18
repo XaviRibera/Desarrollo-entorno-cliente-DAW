@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas de multiplicar</title>
+</head>
+<body>
+    <button onclick="createTable()">Generar tabla</button>
+    <div id="contenedor"> </div>
+    <div id="contenedor2"></div>
+</body>
+<script>
+    "use strict"
+    function createTable(){
+        let PrimeraTabla = askNum()
+        let SegundaTabla = askNum()
+        let tabla="<table border=1>"
+        if(PrimeraTabla<SegundaTabla){
+            for(let i=PrimeraTabla;i<SegundaTabla;i++){
+                for(let e=0;e<=(parseInt(SegundaTabla)-parseInt(PrimeraTabla));e++){
+                    if((e%2)==0){
+                        tabla+="<tr><td>"
+                        tabla+=generateTable(i)
+                        tabla+="</td>"
+                    }else{
+                        tabla+="<td>"
+                        tabla+=generateTable(i)
+                        tabla+="</td></tr>"
+                    }    
+                }
+                
+            }
+            tabla+="</table>"
+            document.getElementById("contenedor2").innerHTML=tabla
+        }else{
+            alert("Tablas no validas")
+        }
+    }
+
+    function generateTable(numero){
+        let titulo="<b>Tabla de multiplicar del " + numero + "</b>"
+        let tablaChiquita="<table border=1>"
+        document.getElementById("contenedor").innerHTML=titulo
+        for(let i=0;i<11;i++){
+            tablaChiquita+="<tr><td>"+numero+"</td><td>X</td><td>"+i+"</td><td>=</td><td>"+numero*i+"</td></tr>"
+        }
+        tablaChiquita+="</table>"
+        return tablaChiquita
+    }
+    function askNum(){
+        return prompt("dime numero para la tabla")
+    }
+</script>
+</html>

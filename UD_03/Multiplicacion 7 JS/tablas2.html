@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas de multiplicar</title>
+</head>
+<body>
+    <button onclick="createTable()">Generar tabla</button>
+    <div id="contenedor"> </div>
+    <div id="contenedor2"></div>
+</body>
+<script>
+    "use strict"
+    function createTable(){
+        let numero = askNum()
+        let titulo="<b>Tabla de multiplicar del " + numero + "</b>"
+        let texto="<table border=1>"
+        document.getElementById("contenedor").innerHTML=titulo
+        for(let i=0;i<11;i++){
+            texto+="<tr><td>"+numero+"</td><td>X</td><td>"+i+"</td><td>=</td><td>"+numero*i+"</td></tr>"
+        }
+        texto+="</table>"
+        document.getElementById("contenedor2").innerHTML=texto
+    }
+
+    function askNum(){
+        return prompt("dime numero...")
+    }
+</script>
+</html>

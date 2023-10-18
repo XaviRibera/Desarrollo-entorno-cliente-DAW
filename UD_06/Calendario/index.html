@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="calendario"></div>
+    <script>
+        function crearCalendario(){
+            let dia = 1;
+            let meses = [31,28,31,30,31,30,31,30,31,30,31,30];
+
+            let diaActual = new Date();
+            let anyoActual = diaActual.getFullYear();
+            let mesActual = diaActual.getMonth();
+
+            let primerDiaMes = new Date(anyoActual,mesActual,1);
+            let ultimoDiaMes = new Date(anyoActual,mesActual,meses[mesActual]);
+            let primerDiaSemana = primerDiaMes.getDay();
+            
+            
+            let calendario = "<table border=1><tr><td>L</td><td>M</td><td>X</td><td>J</td><td>V</td><td>S</td><td>D</td></tr>"
+            for(let i = 0;i<6;i++){
+                calendario += "<tr>";
+                for(let j=1;j<8;j++){
+                    if(i === 0 && j<primerDiaSemana){
+                        calendario+=celdaContenido("");
+                    } else if(dia <=meses[mesActual]){
+                        calendario+=celdaContenido(dia);
+                        dia++
+                    }
+                }
+                calendario+="</tr>";}
+            document.getElementById("calendario").innerHTML=calendario+="</table>";
+        }
+
+        function celdaContenido(contenido){
+            return "<td>"+contenido+"</td>";
+        }
+
+        crearCalendario();
+    </script>
+</body>
+</html>
