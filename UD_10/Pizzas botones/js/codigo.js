@@ -1,5 +1,7 @@
 "use strict"
 
+
+let total = 0;
 pizzas.forEach(pizza => printHUD(pizza));
 changeImport(0);
 
@@ -36,5 +38,6 @@ function showIngredients(){
 }
 
 function changeImport(precio){
-    document.getElementById("importe").innerHTML = "Importe: " + precio;
+    total += parseFloat(precio);
+    document.getElementById("importe").innerHTML = "Importe: " + precio + "<br>Total: " + total;
 }
