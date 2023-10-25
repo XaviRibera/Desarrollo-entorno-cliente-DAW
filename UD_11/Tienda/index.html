@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .c-image{
+        width: 100px;
+        height: 65px;
+    }
+
+    .c-form{
+        text-align: right;
+        width: max-content;
+    }
+
+    .c-preview{
+        background-image: url("amstel.jpg");
+        background-color: #cccccc;
+        width: 440px;
+        height: 460px;
+    }
+
+    .c-cpntendor{
+        display: grid;
+    }
+
+    .c-image-preview{
+        position: absolute;
+        width: 440px;
+        height: 460px;
+        opacity: 0;
+    }
+</style>
+<body>
+    <div>
+        <div class="c-contendeor">
+            <form class="c-form">
+                <img src="bravas.jpg" alt="" class="c-image" id="A1I">
+                <label for="A1">Bravas 6€</label>
+                <input type="checkbox" name="bravas" id="A1" class="menu">
+                <img src="tablaQQ.jpg" alt="" class="c-image" id="A2I">
+                <label for="A2">Tabla de quesos 15€</label>
+                <input type="checkbox" name="tablaQQ" id="A2" class="menu">
+                <img src="croquetas.jpg" alt="" class="c-image" id="A3I">
+                <label for="A3">Croqueta(1UD) 1€</label>
+                <input type="checkbox" name="croqueta" id="A3" class="menu">
+            </form>
+            <button onclick="calcPrice()">Total</button>
+        </div>
+        <div class="c-preview">
+            <img src="bravas.jpg" alt="" class="c-image-preview" id="A1IPreview">
+            <img src="tablaQQ.jpg" alt="" class="c-image-preview" id="A2IPreview">
+            <img src="croquetas.jpg" alt="" class="c-image-preview" id="A3IPreview">
+        </div>
+    </div>
+    
+    <script>
+        let total = 0;
+        let menu = [{
+                        "id":"A1",
+                        "imgId":"A1I",
+                        "name":"Bravas",
+                        "price":6
+                    },{
+                        "id":"A2",
+                        "imgId":"A2I",
+                        "name":"TablaQuesos",
+                        "price":15
+                    },{
+                        "id":"A3",
+                        "imgId":"A3I",
+                        "name":"Croqueta",
+                        "price":"1"
+                    }
+                ];
+        
+                
+        menu.forEach(a =>{ document.getElementById(a.imgId).onmouseover=mostrarImg,
+                            document.getElementById(a.imgId).onmouseout=quitarImg
+                        });
+        
+        function mostrarImg(){
+            document.getElementById(this.id + "Preview").style.opacity = "1";
+        }
+
+        function quitarImg(){
+            document.getElementById(this.id + "Preview").style.opacity = "0";
+        }
+        
+        function calcPrice(){
+            var checkboxes = document.getElementsByTagName("menu")
+            Array.from(checkboxes).forEach(checkbox =>{
+                if(checkbox.type=checkbox && checkbox.checked){
+                    total+=parseInt(menu.find(checkbox.id).price);
+                };
+            })
+            console.log(total)
+        }
+    </script>
+</body>
+</html>
