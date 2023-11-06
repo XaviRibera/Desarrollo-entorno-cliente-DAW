@@ -2,15 +2,19 @@ class Carrito{
 	constructor(id){						
 	}
 						
-	anyadeArticulo(articulo){		
-		}			
+	anyadeArticulo(articulo){	
+
+	}			
 				
-	borraArticulo(codigo){		
+	borraArticulo(codigo){	
+
 	}
 	
-	modificaUnidades(codigo,n){		
+	modificaUnidades(codigo,n){	
+
 	}	
 			
 	verCarrito(){
+		
 	}			
 }
