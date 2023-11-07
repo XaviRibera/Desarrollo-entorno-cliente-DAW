@@ -66,27 +66,34 @@
 		articleBuyBtn.id = articulo.codigo;
 		articleBuyBtn.classList.add("btn-success");
 		articleBuyBtn.appendChild(document.createTextNode("Comprar"));
+		articleBuyBtn.addEventListener("click", function (){	ponArticuloEnCarrito(miCarrito,article.codigo);		});
 		article.appendChild(articleBuyBtn);
 
 		document.getElementById("contenedor").appendChild(article);
 	}
 	
 	
-	function ponArticuloEnCarrito(){
-		
+	function ponArticuloEnCarrito(miCarrito,codigoArticle){
+		if(miCarrito.articulos.find(article => article.codigo == codigoArticle)){
+			miCarrito.aumentarUnidades(codigoArticle);
+		}else{
+			miCarrito.anyadeArticulo(listaArticulos.find(article => article.codigo == codigoArticle));
+		}
 	}
 
 
-	function verCarro(){
-	
+	function verCarro(miCarrito){
+		document.getElementById("miDialogo").showModal();
 	}
 
-	function efectuaPedido(){
-	
+	function efectuaPedido(miCarrito){
+		miCarrito = new Carrito();
 	}
 
 	window.onload=()=>{
 		creaListaCriterios();
 		pintaArticulos();
+		let miCarrito = new Carrito();
+		document.getElementById("carrito").addEventListener("click",verCarro);
 	}
 

@@ -1,9 +1,14 @@
 class Carrito{
-	constructor(id){						
+
+	constructor(id){	
+		this.articulos = [];
+		this.unidades = new Map();			
 	}
 						
-	anyadeArticulo(articulo){	
-
+	anyadeArticulo(articulo){
+		this.articulos.push(articulo);
+		this.unidades.set(articulo.codigo, 1);
+		this.verCarrito();
 	}			
 				
 	borraArticulo(codigo){	
