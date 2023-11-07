@@ -14,12 +14,20 @@
 	function pintaArticulos(){
 		document.getElementById("contenedor").innerHTML="";
 		let listaFiltro = document.getElementById("criteriosOrdenacion");
-		if(listaFiltro.value == "Sin ordenar"){
+		if(listaFiltro.value === "Sin ordenar"){
 			listaArticulos.forEach(articulo => montarArticulo(articulo));
-		} else if(listaFiltro.value == "Ascendente por precio"){
-			listaArticulos.sort(function(a,b){
-				return a - b;
-			}).forEach(articulo => montarArticulo(articulo));
+		} else if(listaFiltro.value === "Ascendente por precio"){
+			let listaOrdenada = [...listaArticulos];
+			listaOrdenada.sort(function(a,b){
+				return a.precio - b.precio;
+			});
+			listaOrdenada.forEach(articulo => montarArticulo(articulo));
+		}else if(listaFiltro.value === "Descendente por precio"){
+			let listaOrdenada = [...listaArticulos];
+			listaOrdenada.sort(function(a,b){
+				return b.precio - a.precio;
+			});
+			listaOrdenada.forEach(articulo => montarArticulo(articulo));
 		}
 		
 	}

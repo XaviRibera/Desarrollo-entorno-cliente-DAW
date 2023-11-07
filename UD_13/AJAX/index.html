@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="getPeliculas()">ver peliculas</button>
+    <button onclick="getPelicula()">ver pelicula</button>
+    <button onclick="deletePelicula()">eliminar peliculas</button>
+    <button onclick="postPelicula()">insertar peliculas</button>
+    <button onclick="putPelicula()">modificar peliculas</button>
+
+
+    <div id="peliculas"> </div>
+
+    
+</body>
+<script>
+
+    let capa = document.getElementById("peliculas")
+
+    function getPeliculas(){
+        let xhr = new XMLHttpRequest()
+        let url = "http://localhost:3000/peliculas"
+
+        xhr.open("GET", url)
+        xhr.send()
+        xhr.responseType= "json"
+        xhr.onload = () => {if (xhr.status==200){
+                            let peliculas = xhr.response
+                            console.log(peliculas)
+                            capa.innerHTML=""
+                            peliculas.forEach(p=> capa.innerHTML+="<p>" + p.title + "</p>")
+        } else {
+            capa.innerHTML=`ERROR ${xhr.statusText}  CODIGO: ${xhr.status}`}
+        }
+    xhr.onerror=()=> console.log("ERROR...")
+}
+
+
+function getPelicula(){
+        let id = prompt("Dime id de peliculas; ")
+        let xhr = new XMLHttpRequest()
+        let url = "http://localhost:3000/peliculas/" + id
+
+        xhr.open("get", url)
+        xhr.send()
+        xhr.responseType= "json"
+        xhr.onload = () => {if (xhr.status==200){
+                            let peliculas = xhr.response
+                            capa.innerHTML+="<p>" + peliculas.title
+        } else {
+            capa.innerHTML=`ERROR ${xhr.statusText}  CODIGO: ${xhr.status}`}
+        }
+}
+
+function deletePelicula(){
+        let id = prompt("Dime id de la pelicula a borrar: ")
+        let xhr = new XMLHttpRequest()
+        let url = "http://localhost:3000/peliculas/" + id
+
+        xhr.open("delete", url)
+        xhr.send()
+        xhr.responseType= "json"
+        xhr.onload = () => {if (xhr.status==200){
+            capa.innerHTML+="<p> Pelicula con id " + id + " borrada </p>"
+        } else {
+            capa.innerHTML=`ERROR ${xhr.statusText}  CODIGO: ${xhr.status}`}
+        }
+}
+
+function postPelicula(){
+
+        let xhr = new XMLHttpRequest()
+        let url = "http://localhost:3000/peliculas/"
+
+        let pelicula={
+            'id':parseInt(prompt("Dime un id: ")),
+            'title': prompt("Dime un titulo: "),
+            'year': prompt("Dime un año: ") ,
+            'runtime': prompt("Dime duracion: ")}
+
+        xhr.open("post", url)
+        xhr.responseType="json"
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(JSON.stringify(pelicula))
+
+        xhr.onload = () => {if (xhr.status==200 || xhr.status==201){
+            capa.innerHTML+="<p> Pelicula insertada </p>"
+        } else {
+            capa.innerHTML=`ERROR ${xhr.statusText}  CODIGO: ${xhr.status}`}
+            }
+        }
+
+        function postPelicula(){
+
+        let xhr = new XMLHttpRequest()
+        let url = "http://localhost:3000/peliculas/"
+
+        let pelicula={
+            'id':parseInt(prompt("Dime un id: ")),
+            'title': prompt("Dime un titulo: "),
+            'year': prompt("Dime un año: ") ,
+            'runtime': prompt("Dime duracion: ")}
+
+        xhr.open("post", url)
+        xhr.responseType="json"
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(JSON.stringify(pelicula))
+
+        xhr.onload = () => {if (xhr.status==200 || xhr.status==201){
+            capa.innerHTML+="<p> Pelicula insertada </p>"
+        } else {
+            capa.innerHTML=`ERROR ${xhr.statusText}  CODIGO: ${xhr.status}`}
+            }
+        }
+
+
+
+function putPelicula(){
+
+        let xhr = new XMLHttpRequest()
+        id= prompt("Dime id:")
+        let url = "http://localhost:3000/peliculas/" +id
+
+        let pelicula={
+            'title': prompt("Dime un nuevo titulo: "),
+            'year': prompt("Dime un nuevo año: ") ,
+            'runtime': prompt("Dime una nueva duracion: ")}
+
+        xhr.open("put", url)
+        xhr.responseType="json"
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(JSON.stringify(pelicula))
+
+        xhr.onload = () => {if (xhr.status==200 || xhr.status==201){
+            capa.innerHTML+="<p> Pelicula con id " + id + " modificada </p>"
+        } else {
+            capa.innerHTML=`ERROR ${xhr.statusText}  CODIGO: ${xhr.status}`}
+            }
+        }
+
+</script>
+</html>
+

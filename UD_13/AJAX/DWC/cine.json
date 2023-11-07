@@ -1,0 +1,153 @@
+{
+  "peliculas": [
+    {
+      "title": "TORRENTE 1",
+      "year": "2023",
+      "runtime": "1",
+      "id": 1
+    },
+    {
+      "title": "TORRENTE 2",
+      "year": "2023",
+      "runtime": "1",
+      "id": 2
+    },
+    {
+      "title": "TORRENTE 3",
+      "year": "2023",
+      "runtime": "1",
+      "id": 3
+    },
+    {
+      "title": "TORRENTE 5",
+      "year": "2003",
+      "runtime": "123",
+      "id": 4
+    },
+    {
+      "title": "ginebra con limon",
+      "year": "2023",
+      "runtime": "1",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "title": "Star Wars: Episodio IV - Una Nueva Esperanza",
+      "year": "1977",
+      "runtime": "121"
+    },
+    {
+      "id": 7,
+      "title": "The Dark Knight",
+      "year": "2008",
+      "runtime": "152"
+    },
+    {
+      "id": 8,
+      "title": "Inception",
+      "year": "2010",
+      "runtime": "148"
+    },
+    {
+      "id": 9,
+      "title": "Forrest Gump",
+      "year": "1994",
+      "runtime": "142"
+    },
+    {
+      "id": 10,
+      "title": "The Shawshank Redemption",
+      "year": "1994",
+      "runtime": "142"
+    },
+    {
+      "id": 11
+    },
+    {
+      "title": "dos tontos mu tontos",
+      "year": "2002",
+      "runtime": "120",
+      "id": 12
+    },
+    {
+      "title": "nuevo id 13",
+      "year": "2002",
+      "runtime": "120",
+      "id": 13
+    },
+    {
+      "title": "nonooo sala de reuniones nonooo",
+      "year": "2023",
+      "runtime": "1",
+      "id": 14
+    },
+    {
+      "id": 15,
+      "title": "i like to move it move it",
+      "year": "2003",
+      "runtime": "14"
+    }
+  ],
+  "actores": [
+    {
+      "id": 1,
+      "name": "Santiago Segura"
+    },
+    {
+      "id": 2,
+      "name": "Marlon Brando"
+    },
+    {
+      "id": 3,
+      "name": "Leonardo DiCaprio"
+    },
+    {
+      "id": 4,
+      "name": "Sigourney Weaver"
+    },
+    {
+      "id": 5,
+      "name": "Harrison Ford"
+    },
+    {
+      "id": 6,
+      "name": "Meryl Streep"
+    },
+    {
+      "id": 7,
+      "name": "Tom Hanks"
+    },
+    {
+      "id": 8,
+      "name": "Heath Ledger"
+    },
+    {
+      "id": 9,
+      "name": "Johnny Depp"
+    },
+    {
+      "id": 10,
+      "name": "Robert De Niro"
+    },
+    {
+      "id": 11,
+      "name": "Natalie Portman"
+    },
+    {
+      "id": 12,
+      "name": "Denzel Washington"
+    },
+    {
+      "id": 13,
+      "name": "Kate Winslet"
+    },
+    {
+      "id": 14,
+      "name": "Brad Pitt"
+    },
+    {
+      "id": 15,
+      "name": "Morgan Freeman"
+    }
+  ]
+}
