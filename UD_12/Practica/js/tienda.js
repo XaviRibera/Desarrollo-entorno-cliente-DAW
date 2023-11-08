@@ -83,7 +83,7 @@
 
 
 	function verCarro(miCarrito){
-		document.getElementById("miDialogo").showModal();
+		document.getElementById("miDialogo").showModal(); 
 	}
 
 	function efectuaPedido(miCarrito){

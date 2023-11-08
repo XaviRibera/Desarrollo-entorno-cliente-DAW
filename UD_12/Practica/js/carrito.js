@@ -8,7 +8,6 @@ class Carrito{
 	anyadeArticulo(articulo){
 		this.articulos.push(articulo);
 		this.unidades.set(articulo.codigo, 1);
-		this.verCarrito();
 	}			
 				
 	borraArticulo(codigo){	
