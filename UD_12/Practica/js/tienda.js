@@ -1,4 +1,11 @@
-	criterios=["Sin ordenar","Ascendente por precio", "Descendente por precio"]
+	criterios=["Sin ordenar","Ascendente por precio", "Descendente por precio"];
+
+	window.onload=()=>{
+		creaListaCriterios();
+		let miCarrito = new Carrito();
+		pintaArticulos(miCarrito);
+		document.getElementById("carrito").addEventListener("click",verCarro);
+	}
 	
 	function creaListaCriterios(){
 		let listaFiltro = document.getElementById("criteriosOrdenacion");
@@ -11,28 +18,28 @@
 	}
 
 
-	function pintaArticulos(){
+	function pintaArticulos(miCarrito){
 		document.getElementById("contenedor").innerHTML="";
 		let listaFiltro = document.getElementById("criteriosOrdenacion");
 		if(listaFiltro.value === "Sin ordenar"){
-			listaArticulos.forEach(articulo => montarArticulo(articulo));
+			listaArticulos.forEach(articulo => montarArticulo(articulo,miCarrito));
 		} else if(listaFiltro.value === "Ascendente por precio"){
 			let listaOrdenada = [...listaArticulos];
 			listaOrdenada.sort(function(a,b){
 				return a.precio - b.precio;
 			});
-			listaOrdenada.forEach(articulo => montarArticulo(articulo));
+			listaOrdenada.forEach(articulo => montarArticulo(articulo,miCarrito));
 		}else if(listaFiltro.value === "Descendente por precio"){
 			let listaOrdenada = [...listaArticulos];
 			listaOrdenada.sort(function(a,b){
 				return b.precio - a.precio;
 			});
-			listaOrdenada.forEach(articulo => montarArticulo(articulo));
+			listaOrdenada.forEach(articulo => montarArticulo(articulo,miCarrito));
 		}
 		
 	}
 
-	function montarArticulo(articulo){
+	function montarArticulo(articulo,miCarrito){
 		let article = document.createElement("div");
 		article.classList.add("card");
 
@@ -74,26 +81,22 @@
 	
 	
 	function ponArticuloEnCarrito(miCarrito,codigoArticle){
-		if(miCarrito.articulos.find(article => article.codigo == codigoArticle)){
+		let article = miCarrito.articulos.find(article => article.codigo == codigoArticle);
+		if(article){
 			miCarrito.aumentarUnidades(codigoArticle);
 		}else{
-			miCarrito.anyadeArticulo(listaArticulos.find(article => article.codigo == codigoArticle));
+			miCarrito.anyadeArticulo(article);
 		}
 	}
 
 
 	function verCarro(miCarrito){
-		document.getElementById("miDialogo").showModal(); 
+		document.getElementById("miDialogo").showModal();
 	}
 
 	function efectuaPedido(miCarrito){
 		miCarrito = new Carrito();
 	}
 
-	window.onload=()=>{
-		creaListaCriterios();
-		pintaArticulos();
-		let miCarrito = new Carrito();
-		document.getElementById("carrito").addEventListener("click",verCarro);
-	}
+	
 
