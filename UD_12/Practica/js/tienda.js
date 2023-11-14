@@ -1,11 +1,4 @@
-	criterios=["Sin ordenar","Ascendente por precio", "Descendente por precio"];
-
-	window.onload=()=>{
-		creaListaCriterios();
-		let miCarrito = new Carrito();
-		pintaArticulos(miCarrito);
-		document.getElementById("carrito").addEventListener("click",verCarro);
-	}
+	criterios=["Sin ordenar","Ascendente por precio", "Descendente por precio"]
 	
 	function creaListaCriterios(){
 		let listaFiltro = document.getElementById("criteriosOrdenacion");
@@ -73,7 +66,7 @@
 		articleBuyBtn.id = articulo.codigo;
 		articleBuyBtn.classList.add("btn-success");
 		articleBuyBtn.appendChild(document.createTextNode("Comprar"));
-		articleBuyBtn.addEventListener("click", function (){	ponArticuloEnCarrito(miCarrito,article.codigo);		});
+		articleBuyBtn.addEventListener("click", function (){ponArticuloEnCarrito(miCarrito,articulo.codigo); });
 		article.appendChild(articleBuyBtn);
 
 		document.getElementById("contenedor").appendChild(article);
@@ -81,22 +74,35 @@
 	
 	
 	function ponArticuloEnCarrito(miCarrito,codigoArticle){
-		let article = miCarrito.articulos.find(article => article.codigo == codigoArticle);
-		if(article){
-			miCarrito.aumentarUnidades(codigoArticle);
+		if(miCarrito.articulos.find(article => article.codigo === codigoArticle)){
+			miCarrito.modificaUnidades(codigoArticle,1);
 		}else{
-			miCarrito.anyadeArticulo(article);
+			miCarrito.anyadeArticulo(listaArticulos.find(article => article.codigo == codigoArticle));
 		}
 	}
 
 
 	function verCarro(miCarrito){
+		miCarrito.verCarrito();
 		document.getElementById("miDialogo").showModal();
+		document.getElementById("btnCierraDialog").addEventListener("click", function () {
+			miDialogo.close()
+		})
+		document.getElementById("btnEfectuaPedido").addEventListener("click", function (){
+			efectuaPedido(miCarrito);
+		});
 	}
 
 	function efectuaPedido(miCarrito){
-		miCarrito = new Carrito();
+		let newId = miCarrito.id + 1;
+		miCarrito = new Carrito(newId);
+		verCarro(miCarrito);
 	}
 
-	
+	window.onload=()=>{
+		let miCarrito = new Carrito(35);
+		creaListaCriterios();
+		pintaArticulos(miCarrito);
+		document.getElementById("carrito").addEventListener("click", function (){verCarro(miCarrito)});
+	}
 
