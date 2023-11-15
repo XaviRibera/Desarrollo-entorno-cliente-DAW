@@ -88,9 +88,7 @@
 		document.getElementById("btnCierraDialog").addEventListener("click", function () {
 			miDialogo.close()
 		})
-		document.getElementById("btnEfectuaPedido").addEventListener("click", function (){
-			efectuaPedido(miCarrito);
-		});
+		
 	}
 
 	function efectuaPedido(miCarrito){
@@ -104,5 +102,6 @@
 		creaListaCriterios();
 		pintaArticulos(miCarrito);
 		document.getElementById("carrito").addEventListener("click", function (){verCarro(miCarrito)});
+		document.getElementById("btnEfectuaPedido").addEventListener("click", function (){efectuaPedido(miCarrito)});
 	}
 
